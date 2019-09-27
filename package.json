@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Danielandro/js-algorithm-timer#readme",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "chart.js": "^2.8.0"
   }
 }
