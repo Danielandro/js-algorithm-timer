@@ -8,7 +8,7 @@ const {
 function timer(arrSize, algorithm) {
   for (let i = 5000; i <= arrSize; i += 5000) {
     let testArr = setupArray(i);
-    shuffle(testArr);
+
 
     function run() {
       testArr.algorithm;
@@ -36,8 +36,20 @@ function setupArray(arrSize) {
   return arr;
 }
 
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
+function shuffle(arr) {
+  // Fisher-Yates Shuffle Modern Algorithm 
+  let currentIndex = arr.length;
+  let randomIndex, temp;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    temp = arr[randomIndex];
+    arr[randomIndex] = arr[currentIndex];
+    arr[currentIndex] = temp;
+  }
+  return arr;
 }
 
 module.exports = {
