@@ -1,29 +1,18 @@
 // const NumberOfIncrements = 10;
 // const ArrayIncrements = 50000;
-const {
-  performance,
-  PerformanceObserver
-} = require('perf_hooks');
 
 function timer(arrSize, algorithm) {
   for (let i = 5000; i <= arrSize; i += 5000) {
     let testArr = setupArray(i);
 
 
-    function run() {
-      testArr.algorithm;
-    }
+    let start = performance.now();
+    testArr.algorithm;
+    let end = performance.now();
 
-    const wrapped = performance.timerify(run);
+    let time = end - start;
+    console.log(time);
 
-    const obs = new PerformanceObserver((list) => {
-      console.log(`SIZE: ${i}`, list.getEntries()[0].duration, ' ms');
-      obs.disconnect();
-    });
-    obs.observe({ entryTypes: ['function'] });
-
-    // A performance timeline entry will be created
-    wrapped();
   }
 }
 
@@ -52,9 +41,6 @@ function shuffle(arr) {
   return arr;
 }
 
-module.exports = {
-  timer
-};
 
 var reverse = Array.prototype.reverse;
 
@@ -64,6 +50,48 @@ timer(10000000, reverse);
 // grab the results
 // plot the graph
 
+{/* <script>
+  var ctx = document.getElementById('myChart');
+      var myChart = new Chart(ctx, {
+    type: 'bar',
+        data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+datasets: [
+            {
+    label: '# of Votes',
+data: [12, 19, 3, 5, 2, 3],
+backgroundColor: [
+'rgba(255, 99, 132, 0.2)',
+'rgba(54, 162, 235, 0.2)',
+'rgba(255, 206, 86, 0.2)',
+'rgba(75, 192, 192, 0.2)',
+'rgba(153, 102, 255, 0.2)',
+'rgba(255, 159, 64, 0.2)'
+],
+borderColor: [
+'rgba(255, 99, 132, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(75, 192, 192, 1)',
+'rgba(153, 102, 255, 1)',
+'rgba(255, 159, 64, 1)'
+],
+borderWidth: 1
+}
+]
+},
+        options: {
+    scales: {
+    yAxes: [
+              {
+    ticks: {
+    beginAtZero: true
+}
+}
+]
+}
+}
+});
+    </script>
 
-
-
+ */}
